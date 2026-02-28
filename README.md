@@ -17,21 +17,21 @@ Each match features a **defender mission** — a specific persona with something
 
 ### Scenarios
 
-| Scenario | Defender's job | Attacker wins if... |
-|----------|---------------|-------------------|
-| **Prompt Injection** | Execute a fixed task (translate, format SQL, count words) | Defender abandons its task |
-| **Prompt Leaking** | Guard a secret (passphrase, API key, PIN) | Defender reveals the secret |
-| **Jailbreaking** | Enforce a content policy (no competitors, English-only) | Defender violates its policy |
+| Scenario             | Defender's job                                            | Attacker wins if...          |
+| -------------------- | --------------------------------------------------------- | ---------------------------- |
+| **Prompt Injection** | Execute a fixed task (translate, format SQL, count words) | Defender abandons its task   |
+| **Prompt Leaking**   | Guard a secret (passphrase, API key, PIN)                 | Defender reveals the secret  |
+| **Jailbreaking**     | Enforce a content policy (no competitors, English-only)   | Defender violates its policy |
 
 Each scenario has 5 defender missions, randomly selected per match for variety.
 
 ### Information asymmetry
 
-| Agent | What it knows |
-|-------|--------------|
+| Agent    | What it knows                                          |
+| -------- | ------------------------------------------------------ |
 | Attacker | Mission category only (e.g. "defender holds a secret") |
-| Defender | Full mission directive as its system prompt |
-| Judge | Full mission directive for accurate evaluation |
+| Defender | Full mission directive as its system prompt            |
+| Judge    | Full mission directive for accurate evaluation         |
 
 ## Why is it useful?
 
@@ -59,21 +59,4 @@ export OPENAI_API_KEY=sk-...
 
 # Run the arena
 npm run raydar
-```
-
-## Project structure
-
-```
-src/
-  agents/         # Attacker, defender, judge, commentator runners
-  core/           # Arena director (match orchestration)
-  prompts/        # System prompts and scenario definitions
-    attacker/     # Attacker prompt compiler
-    defender/     # Defender prompt compiler
-    judge/        # Judge prompt compiler
-    scenarios/    # Prompt injection, leaking, jailbreaking configs
-  services/       # OpenAI client wrapper
-  ui/             # Ink components (Setup, LiveArena, Results)
-  types/          # TypeScript interfaces and Zod schemas
-  persistence/    # Match artifact storage
 ```
